@@ -1,0 +1,81 @@
+
+
+.viewport {
+    position: relative;
+    background-color: #eeeeee;
+    width: 40em;
+    height: 40em;
+    margin-top: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    /*overflow: hidden;*/
+}
+
+.vitruvian-container {
+    box-sizing: border-box;
+    position: relative;
+    /* square is 82.8% diameter of circle.
+       sub elements are 33.33% smaller than containing square.
+     */
+    /*background-color: white;*/
+
+    left: 82.8%;
+    top: calc(-33.333%/2);
+
+    width: 33.333%;
+    height: 33.333%;
+    border-radius: 50%; /*this is so the hover is only triggered in the circle */
+
+
+    background-size: cover;
+    transition-property: width, height, left, top, opacity;
+    transition-duration: 1.0s;
+}
+
+/* animate zooming in of sublevels */
+.vitruvian-container:hover:not(.final) {
+    width: calc(100%/0.828);
+    height: calc(100%/0.828);
+    left: -10%;
+    top: -20%;
+    opacity: 1.0;
+}
+
+
+.vitruvian-circle {
+    position: relative;
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+
+    border: 2px solid #000000;
+    border-radius: 50%;
+
+    background-size: cover;
+}
+
+.vitruvian-square {
+    position: relative;
+    top: calc(17.2% - 2px);
+    margin: 0 auto;
+
+    width: 82.8%;
+    height: 82.8%;
+
+    border: 2px solid #000000;
+}
+
+
+/* recursive opacity for each level beyond second from current hovered (zoomed) level */
+/* i.e. don't reduce opacity of the current level, and the next level, but all others */
+.vitruvian-container:not(:hover) div div div {
+    opacity: 0.8;
+}
+
+ /*don't display beyond 4th level -- is this faster/better?*/
+.vitruvian-container:not(:hover) > div > div > div > div > div > div > div > div div {
+    display: none;
+}
+
