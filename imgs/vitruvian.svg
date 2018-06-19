@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="no"?>
+<svg version="1.1"
+     baseProfile="full"
+     height="400"  width="400"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <def>
+       <circle id="circle" cx="50%" cy="50%" r="50%" />
+       <rect id="square" width="82.8%" height="82.8%" y="17.2%" x="8.6%" />
+       <clipPath id="circle-clip">
+         <use href="#circle"/>
+       </clipPath>
+       <clipPath id="square-clip">
+         <use href="#square"/>
+       </clipPath>
+       <clipPath id="vitruvian-clip">
+         <use href="#circle"/>
+         <use href="#square"/>
+       </clipPath>
+    </def>
+
+    <use href="#circle" fill="lightgray"/>
+    <use href="#square" fill="lightgray" stroke="black" stroke-width="4"  clip-path="url(#square-clip)"/>
+    <use href="#circle" fill="none" stroke="black" stroke-width="4" clip-path="url(#circle-clip)"/>
+
+</svg>

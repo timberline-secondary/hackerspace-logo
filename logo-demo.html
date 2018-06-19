@@ -7,13 +7,18 @@
 </head>
 <body>
 
-<div class="viewport" id="hackerlogo">
+
+<div>
+  <img src="https://hackerspace.sd72.bc.ca/static/img/banner.png" class="vitruvian-img">
+</div>
+
+<!-- <div class="viewport" id="hackerlogo">
     <div class="vitruvian-circle">
         <div class="vitruvian-square" id="logo-base">
 
         </div>
     </div>
-</div>
+</div> -->
 
 <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -28,24 +33,40 @@
         "https://hackerspace.sd72.bc.ca/media/documents/2018/06/17/81007635-93B1-4BAD-8096-41E74DBB00A6.jpeg",
         "https://hackerspace.sd72.bc.ca/media/documents/2018/06/01/t-shirt.png",
         "https://hackerspace.sd72.bc.ca/media/documents/2018/05/24/IMG_0111.jpg",
+        "https://hackerspace.sd72.bc.ca/media/images/KaylinDwolf.jpg",
+        "https://hackerspace.sd72.bc.ca/media/images/MIchaelaLogo.jpg",
         "http://i.giphy.com/Vuw9m5wXviFIQ.gif",
         "https://hackerspace.sd72.bc.ca/media/icons/badges/Axeman.png",
         "https://static-cdn.jtvnw.net/jtv_user_pictures/bobross-profile_image-0b9dd167a9bb16b5-300x300.jpeg",
         "https://hackerspace.sd72.bc.ca/media/avatars/Goldberg.gif",
+        "https://hackerspace.sd72.bc.ca/media/avatars/Goldberg.gif",
+        "https://hackerspace.sd72.bc.ca/media/avatars/Goldberg.gif",
+        "https://hackerspace.sd72.bc.ca/media/avatars/Goldberg.gif",
+        "https://hackerspace.sd72.bc.ca/media/avatars/Goldberg.gif",
+        "imgs/vitruvian.svg",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
+        "imgs/VitruvianManDaVinci.png",
         "imgs/VitruvianManDaVinci.png",
     ];
 
     let $template = $('<div/>').addClass('vitruvian-container');
+    let $img = $('<img src="'+imgUrls[i]+'"  class="vitruvian-img"/>').appendTo($template);
     let $circle = $('<div/>').addClass('vitruvian-circle').appendTo($template);
     let $square = $('<div/>').addClass('vitruvian-square').appendTo($circle);
 
     let $currentNode = $("#logo-base");
 
-    // $currentNode.append($vitruvianTemplate)
-
     for (var i in imgUrls ){
         var $nextNode = $template.clone();
-        $nextNode.css('background-image', 'url(' + imgUrls[i] + ')');
+        $nextNode.find('img').attr('src', imgUrls[i]);
         $currentNode.append($nextNode);
         $currentNode = $currentNode.find('.vitruvian-square');
 
