@@ -13,11 +13,16 @@
        <clipPath id="square-clip">
          <use href="#square"/>
        </clipPath>
-       <clipPath id="vitruvian-clip">
+       <clipPath id="clip"
+           clipPathUnits="objectBoundingBox"
+           transform="scale(0.0025, 0.0025)"
+           >
+           <!-- https://css-tricks.com/scaling-svg-clipping-paths-css-use/ -->
          <use href="#circle"/>
          <use href="#square"/>
        </clipPath>
     </def>
+
 
     <use href="#circle" fill="lightgray"/>
     <use href="#square" fill="lightgray" stroke="black" stroke-width="4"  clip-path="url(#square-clip)"/>

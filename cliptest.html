@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hackerspace Logo Demo</title>
+
+    <style>
+    img {
+        width: 40%;
+        height: auto;
+    }
+    .clip {
+        -webkit-clip-path: url('#clip');
+        clip-path: url('#clip');
+    }
+    </style>
+
+</head>
+<body>
+
+<img src="imgs/VitruvianManDaVinci.jpg" class="clip">
+
+<img src="imgs/VitruvianManDaVinci.jpg">
+
+<svg height="400"  width="400"
+    <defs>
+       <clipPath id="clip"
+           clipPathUnits="objectBoundingBox"
+           transform="scale(0.0025, 0.0025)">
+           <!-- https://css-tricks.com/scaling-svg-clipping-paths-css-use/ -->
+           <circle cx="50%" cy="50%" r="50%" />
+           <rect width="82.8%" height="82.8%" y="17.2%" x="8.6%" />
+       </clipPath>
+   </defs>
+</svg>
+
+</body>
+</html>

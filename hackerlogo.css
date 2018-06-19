@@ -16,15 +16,16 @@
     box-sizing: border-box;
     position: relative;
     /* square is 82.8% diameter of circle.
-       sub elements are 33.33% smaller than containing square.
+       sub elements are 35% of the containing square.
+       which is 0.35*82.8 = 28.98% of previous container
      */
     /*background-color: white;*/
 
     left: 82.8%;
-    top: calc(-33.333%/2);
+    top: calc(-30%/2);
 
-    width: 33.333%;
-    height: 33.333%;
+    width: 30%;
+    height: 30%;
     border-radius: 50%; /*this is so the hover is only triggered in the circle */
 
 
@@ -35,13 +36,14 @@
 
 /* animate zooming in of sublevels */
 .vitruvian-container:hover:not(.final) {
-    width: calc(100%/0.828);
-    height: calc(100%/0.828);
-    left: -10%;
-    top: -20%;
+    width: 100%;
+    height: 100%;
+    width: calc(100%/0.828 + 4px); /* +4 is for the border width */
+    height: calc(100%/0.828 + 4px);
+     left: -11%;
+     top: -21%;
     opacity: 1.0;
 }
-
 
 .vitruvian-circle {
     position: relative;
@@ -84,6 +86,6 @@
     left:0px;
     top:0px;
     width: 100%;
-    height: auto;
-    clip-path: url(vitruvian.svg#clip);
+    height: 100%;
+    clip-path: url('#clip');
 }
