@@ -13,37 +13,45 @@
 }
 
 .vitruvian-container {
+    display: block;
     box-sizing: border-box;
     position: relative;
     /* square is 82.8% diameter of circle.
        sub elements are 35% of the containing square.
        which is 0.35*82.8 = 28.98% of previous container
      */
-    /*background-color: white;*/
-
     left: 82.8%;
-    top: calc(-30%/2);
+    top: calc(-30%/2); /* center of square's top right corner */
 
     width: 30%;
     height: 30%;
     border-radius: 50%; /*this is so the hover is only triggered in the circle */
 
-
-    background-size: cover;
     transition-property: width, height, left, top, opacity;
     transition-duration: 1.0s;
 }
 
+
+#logo-base > .vitruvian-container:hover,
+.logo-check:checked + .vitruvian-container > div > div > .vitruvian-container
+{
+    cursor: pointer;
+}
+
 /* animate zooming in of sublevels */
-.vitruvian-container:hover:not(.final) {
-    width: 100%;
-    height: 100%;
-    width: calc(100%/0.828 + 4px); /* +4 is for the border width */
+/* https://stackoverflow.com/questions/13630229/can-i-have-an-onclick-effect-in-css */
+#logo-base > .logo-check:checked + .vitruvian-container,
+.logo-check:checked + .vitruvian-container > div > div > .logo-check:checked + .vitruvian-container:not(.final) {
+    width: calc(100%/0.828 + 4px); /* +4 is for the border width, this gets us back to full size */
     height: calc(100%/0.828 + 4px);
-     left: -11%;
-     top: -21%;
+    /* (1-0.828)/0.828  distance between top of square and top of circle, as a % of the square height*/
+    /* -2px for border */
+    top: calc(-20.773% - 2px);
+    left: calc(-10.386% - 2px);
     opacity: 1.0;
 }
+
+/*.vitruvian-container:hover:not(.final) {*/
 
 .vitruvian-circle {
     position: relative;
@@ -54,8 +62,6 @@
 
     border: 2px solid #000000;
     border-radius: 50%;
-
-    background-size: cover;
 }
 
 .vitruvian-square {
@@ -72,13 +78,18 @@
 
 /* recursive opacity for each level beyond second from current hovered (zoomed) level */
 /* i.e. don't reduce opacity of the current level, and the next level, but all others */
-.vitruvian-container:not(:hover) div div div {
-    opacity: 0.8;
+.logo-check:not(:checked) + .vitruvian-container div div .vitruvian-container {
+    opacity: 0.5;
 }
 
- /*don't display beyond 4th level -- is this faster/better?*/
-.vitruvian-container:not(:hover) > div > div > div > div > div > div > div > div div {
+/*don't display beyond 3rd level of unchecked-- is this faster/better?*/
+.logo-check:not(:checked) + .vitruvian-container .vitruvian-container .vitruvian-container .vitruvian-container {
     display: none;
+}
+
+/*the fat 2px border makes the last visible element look funny */
+.logo-check:not(:checked) + .vitruvian-container .vitruvian-container .vitruvian-container div {
+    border-width: 1px
 }
 
 .vitruvian-img {
@@ -88,4 +99,10 @@
     width: 100%;
     height: 100%;
     clip-path: url('#clip');
+}
+
+/* https://stackoverflow.com/questions/13630229/can-i-have-an-onclick-effect-in-css */
+/* this element is just so we can use the :checked property to fake click events. */
+input.logo-check {
+    display: none;
 }
